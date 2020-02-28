@@ -1,0 +1,11 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t etai/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true etai/docker npm run test
+
+language: generic
